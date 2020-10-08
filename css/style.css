@@ -1,0 +1,579 @@
+/* Breakpoints 
+
+*/
+
+/* Reset */
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #252525;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Menu */
+
+.menu {
+  background: #252525;
+  padding: 20px 0;
+}
+
+.menu-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/*  quando definimos como float todos os elementos dentro
+de outro, o pai acaba não tendo height, pois não há conteúdo
+diretamente dentro dele. */
+.menu-container::after,
+.menu-container::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.menu-logo {
+  display: block;
+  /* quando usamos float, o tamanho do elemento passa a ser
+  do tamanho do conteúdo */
+  float: left;
+  margin-left: 10px;
+}
+
+.menu-nav {
+  float: right;
+  margin-right: 10px;
+}
+
+.menu-nav li {
+  display: inline-block;
+}
+
+.menu-nav a {
+  /*  isto serve para aumentar a área de contato dos botões */
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.125em;
+}
+
+@media (max-width: 739px) {
+  .menu-logo img {
+    width: 70px;
+    overflow: hidden;
+  }
+  .menu-nav {
+    padding-top: 10px;
+    float: none;
+    clear: both;
+  }
+
+  .menu {
+    text-align: center;
+    padding-bottom: 2px;
+  }
+}
+
+/*  intro */
+
+.intro {
+  text-align: center;
+  background: url("../img/bg-intro.jpg") no-repeat center center;
+  background-size: cover;
+  padding: 150px 0;
+  color: #fff;
+}
+
+.intro h1 {
+  text-transform: uppercase;
+  font-size: 3em;
+}
+
+.intro h1::after {
+  content: "";
+  width: 20px;
+  height: 4px;
+  display: block;
+  background: #fff;
+  margin: 10px auto;
+}
+
+.intro p {
+  font-style: italic;
+  font-size: 1.125em;
+}
+
+@media only screen and (max-width: 739px) {
+  .intro {
+    padding: 60px 0;
+  }
+
+  .intro h1 {
+    font-size: 2em;
+  }
+}
+
+/*  Sobre */
+
+.sobre {
+  padding: 60px 0;
+}
+
+.sobre-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 980px) and (min-width: 740px) {
+  .sobre-container {
+    /* tamanho da tela menos o da barra de scroll */
+    max-width: 720px;
+  }
+
+  .sobre-item {
+    /* container dividido por dois, menos
+  20px de margin */
+    width: 340px;
+  }
+}
+
+@media only screen and (max-width: 739px) {
+  .sobre-container {
+    max-width: 300px;
+  }
+
+  .sobre-item {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .sobre span {
+    display: none;
+  }
+}
+
+.sobre-container::after,
+.sobre-container::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sobre h2 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 2.25em;
+  margin-bottom: 60px;
+}
+
+.sobre-item {
+  float: left;
+  margin: 0 10px;
+  max-width: 460px;
+}
+
+.sobre span {
+  position: absolute;
+  font-size: 5em;
+  margin-left: -30px;
+  color: #c17139;
+}
+.sobre-item img {
+  display: block;
+  max-width: 100%;
+}
+
+.sobre-item h3 {
+  font-size: 2.25em;
+  background: #252525;
+  width: 220px;
+  color: #fff;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+  line-height: 1em;
+  text-transform: lowercase;
+  padding: 5px 0 10px 0;
+  /* mesmo eu usando o top e alterando a posição do elemento na tela
+    ele ainda manterá uma "sombra" em branco  na sua posição original, influenciando
+    na posição dos elementos ao redor.
+    Porém isso é válido apenas pro relative, no caso
+    do absolute ele não deixa essa sombra.
+    Além de que no absolute ele leva em consideração
+    o position do seu pai.
+    Caso o pai não seja relative, ele vai atrás do body.
+     */
+  position: relative;
+  top: -25px;
+}
+
+.sobre > p {
+  font-size: 1.125em;
+  line-height: 1.4em;
+  font-style: italic;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 460px;
+}
+
+/*  Produtos */
+
+.produtos {
+  background: #e7e4d8;
+  padding: 60px 0;
+  border-top: 5px solid #d6d3c8;
+  border-bottom: 5px solid #d6d3c8;
+}
+
+.produtos-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.produtos-container::before,
+.produtos-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.produtos-item {
+  width: 300px;
+  float: left;
+  margin: 0 10px 20px 10px;
+}
+
+.produtos-item h2 {
+  font-size: 2.25em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.produtos-item h2::before {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: currentColor;
+  border-radius: 50%;
+  margin: 20px auto;
+  border: 5px solid #e7e4d8;
+  box-shadow: 0 0 0 10px currentColor;
+}
+
+.produtos-item:nth-child(1) h2::before {
+  color: #492901;
+}
+
+.produtos-item:nth-child(2) h2::before {
+  color: #c17139;
+}
+
+.produtos-item:nth-child(3) h2::before {
+  color: #d7a54d;
+}
+
+.produtos-item p {
+  font-size: 0.875em;
+  line-height: 1.4em;
+}
+
+.produtos-btn {
+  width: 180px;
+  border: 3px solid;
+  color: #252525;
+  text-decoration: none;
+  display: block;
+  font-size: 1.125em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 0;
+  margin: 20px auto 0 auto;
+}
+
+@media only screen and (max-width: 980px) and (min-width: 740px) {
+  .produtos-container {
+    /* tamanho da tela menos o da barra de scroll */
+    max-width: 720px;
+  }
+
+  .produtos-item {
+    /* container dividido por dois, menos
+    20px de margin */
+    width: 220px;
+  }
+}
+
+@media only screen and (max-width: 739px) {
+  .produtos-container {
+    max-width: 300px;
+  }
+
+  .produtos-item {
+    margin: 0 auto 20px auto;
+  }
+}
+/*  Locais */
+
+.locais {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.locais-item {
+  /*  impede que outros elementos que não estejam dentro
+dele, flutuem ao seu lado */
+  clear: both;
+  margin: 60px auto;
+}
+
+.locais-item::after,
+.locais-item::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.locais-item img {
+  width: 460px;
+  float: left;
+  display: block;
+  margin: 0 10px;
+}
+
+.locais-item > div {
+  width: 460px;
+  float: left;
+  margin: 0 10px;
+}
+
+.locais-item h2 {
+  font-size: 2.25em;
+  margin-bottom: 20px;
+}
+
+.locais-item p {
+  font-size: 1.125em;
+  line-height: 1.4em;
+  max-width: 320px;
+  margin-bottom: 40px;
+}
+
+.locais-item a {
+  font-size: 1.125em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 3px solid;
+  color: #252525;
+  padding: 10px 20px;
+}
+
+@media only screen and (max-width: 980px) and (min-width: 740px) {
+  .locais {
+    /* tamanho da tela menos o da barra de scroll */
+    max-width: 720px;
+  }
+
+  .locais-item > div,
+  .locais-item img {
+    /* container dividido por dois, menos
+    20px de margin */
+    max-width: 340px;
+  }
+}
+
+@media only screen and (max-width: 739px) {
+  .locais {
+    max-width: 300px;
+  }
+
+  .locais-item > div,
+  .locais-item img {
+    max-width: 300px;
+    margin: 0;
+  }
+}
+
+/*  Assine */
+
+.assine {
+  background: #e7e4d8;
+  padding: 30px 0;
+}
+
+.assine-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.assine-container::after,
+.assine-container::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.assine > div > div {
+  width: 460px;
+  margin: 0 10px;
+  float: left;
+}
+
+.assine > div > div h2 {
+  font-size: 2.25em;
+}
+
+.assine > div > div p {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.assine form {
+  width: 460px;
+  margin: 0 10px;
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+
+.assine form label {
+  display: none;
+}
+
+.assine input {
+  width: 320px;
+  border: 3px solid #252525;
+  background: none;
+  font-size: 1.5em;
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 10px;
+  float: left;
+}
+
+.assine button {
+  background: #252525;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  width: 140px;
+  padding: 13px 0;
+  color: #fff;
+  border: none;
+  float: left;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 980px) and (min-width: 740px) {
+  .assine-container {
+    max-width: 720px;
+  }
+
+  .assine > div > div {
+    width: 340px;
+  }
+
+  .assine form {
+    width: 340px;
+  }
+
+  .assine input {
+    width: 340px;
+  }
+
+  .assine button {
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 739px) {
+  .assine-container {
+    max-width: 300px;
+  }
+
+  .assine > div > div {
+    margin: 0;
+  }
+
+  .assine > div > div h2 {
+    font-size: 1.5em;
+    line-height: 2em;
+  }
+
+  .assine > div > div p {
+    font-size: 1em;
+  }
+
+  .assine > div > div,
+  .assine form,
+  .assine input {
+    width: 300px;
+  }
+
+  .assine button {
+    float: right;
+  }
+}
+
+/* Footer */
+
+.footer {
+  background: #d6d3c8;
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.footer-container::after,
+.footer-container::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer p {
+  float: left;
+  margin: 0 10px;
+  font-size: 1.125em;
+  line-height: 1.4em;
+}
+
+.footer img {
+  float: right;
+  margin: 0 10px;
+  display: block;
+}
+
+@media only screen and (max-width: 739px) {
+  .footer-container {
+    max-width: 300px;
+  }
+
+  .footer img {
+    width: 80px;
+    float: none;
+    margin: 10px 0;
+  }
+
+  .footer p {
+    float: none;
+    margin: 0px;
+  }
+}
